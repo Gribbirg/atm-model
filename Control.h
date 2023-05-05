@@ -10,7 +10,8 @@
 
 class Control : public Base {
 private:
-    bool setup_finish;
+    string current_card;
+    bool init_finish;
 public:
     Control(Base *headObject, string objectName);
 
