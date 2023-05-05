@@ -14,15 +14,16 @@ void Init::signal(string &message) {
     for (int i = 19; i < 23; i++)
         pin += message[i];
 
-    auto system = (System *)get_head_object();
+    auto system = (System *)(get_head_object()->get_head_object()->get_head_object());
     for (auto card : system->cards) {
         if (card->num == card_num && card->pin == pin) {
             message = "\nSelect the command";
-            break;
+            return;
         }
     }
+    message = "\nReady to work";
 }
 
 void Init::handler(string &message) {
-    cout << '\n' << "Signal to " << get_absolute_coordinate() << "   Text: " << message;
+    emit_signal(SIGNAL_D(Init::signal), message);
 }

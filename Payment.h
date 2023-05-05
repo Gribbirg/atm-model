@@ -13,6 +13,8 @@ public:
     Payment(Base *headObject, string objectName);
 
     void signal(string &message);
+
+    void handler(string &message);
 };
 
 

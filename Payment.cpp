@@ -8,7 +8,7 @@
 Payment::Payment(Base *headObject, string objectName) : Base(headObject, objectName) {}
 
 void Payment::signal(string &message) {
-    auto system = (System *)get_head_object();
+    auto system = (System *) (get_head_object()->get_head_object()->get_head_object());
     string card_num, str_value;
     int j, value;
 
@@ -38,22 +38,22 @@ void Payment::signal(string &message) {
 
     value = stoi(str_value);
 
-    for (auto card : system->cards) {
+    for (auto card: system->cards) {
         if (card->num == card_num) {
-            if (card->balance >= value) {
-                system->cash = cash;
-                card->balance -= value;
-                message = "\nTake the money: 5000 * " + to_string(usage[0])
-                        + " rub., 2000 * " + to_string(usage[1])
-                        + " rub., " + to_string(usage[2])
-                        + " rub., 500 * " + to_string(usage[3])
-                        + " rub., 100 * " + to_string(usage[4]) + " rub.";
-            } else {
-                message = "\nThere is not enough money on the card";
-            }
+            system->cash = cash;
+            card->balance -= value;
+            message = "\nTake the money: 5000 * " + to_string(usage[0])
+                      + " rub., 2000 * " + to_string(usage[1])
+                      + " rub., " + to_string(usage[2])
+                      + " rub., 500 * " + to_string(usage[3])
+                      + " rub., 100 * " + to_string(usage[4]) + " rub.";
             break;
         }
     }
+}
+
+void Payment::handler(string &message) {
+    emit_signal(SIGNAL_D(Payment::signal), message);
 }
 
 

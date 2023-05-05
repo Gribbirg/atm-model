@@ -13,11 +13,8 @@ void Reader::signal_card(string &message) {
 }
 
 void Reader::signal(string &message) {
-    string line;
-    getline(cin, line);
-    message += line;
+    getline(cin, message);
 }
-
 
 void Reader::handler(string &message) {
     emit_signal(SIGNAL_D(Reader::signal), "");

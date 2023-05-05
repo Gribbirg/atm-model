@@ -26,11 +26,11 @@ public:
 
     void signal(string &message);
 
+    void signal_out(string &message);
+
     void handler(string &message);
 
-    void handler_card(string &message);
-
-    void handler_money(string &message);
+    void handler_off(string &message);
 
     struct Card {
         string num;

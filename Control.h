@@ -15,9 +15,23 @@ private:
 public:
     Control(Base *headObject, string objectName);
 
-    void signal(string &message);
+    void signal_to_output(string &message);
+
+    void signal_to_init(string &message);
+
+    void signal_to_deposit(string &message);
+
+    void signal_to_deposit_add(string &message);
+
+    void signal_to_deposit_reset(string &message);
+
+    void signal_to_system(string &message);
+
+    void signal_to_payment(string &message);
 
     void handler(string &message);
+
+    void handler_init_result(string &message);
 };
 
 

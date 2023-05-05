@@ -16,8 +16,13 @@ public:
 
     void handler(string &message);
 
+    void handler_add(string &message);
+
+    void handler_reset(string &message);
+
 private:
     int add_balance[5];
+    int sum;
 };
 
 
