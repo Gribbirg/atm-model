@@ -16,11 +16,9 @@ void Deposit::signal(string &message) {
 
 void Deposit::handler(string &message) {
 
-
-    string value;
+    string value, card_num, str_sum;
 
     auto system = (System *) (get_head_object()->get_head_object()->get_head_object());
-    string card_num, str_sum;
     int j;
 
     for (j = 0; j < 19; j++)

@@ -34,7 +34,6 @@ private:
 
     vector<Connection *> connects;
 public:
-    unsigned int cl_n;
 
     Base(Base *head_object, string object_name = "Base_object");
 

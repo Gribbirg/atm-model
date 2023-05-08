@@ -99,11 +99,10 @@ int System::exec_app() {
 
     emit_signal(SIGNAL_D(System::signal_out), "Ready to work");
 
-    emit_signal(SIGNAL_D(System::signal), "");
-
-    while (get_state() != 0) {
+    do {
         emit_signal(SIGNAL_D(System::signal), "");
-    }
+    } while (get_state() != 0);
+
     return 0;
 }
 

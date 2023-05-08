@@ -6,11 +6,6 @@
 
 Output::Output(Base *headObject, string objectName) : Base(headObject, objectName) {}
 
-void Output::signal(string &message) {
-    cout << '\n' << "Signal from " << get_absolute_coordinate();
-    message += " (class: 5)";
-}
-
 void Output::handler(string &message) {
     cout << message;
 }

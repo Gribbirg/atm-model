@@ -12,8 +12,6 @@ class Output : public Base{
 public:
     Output(Base *headObject, string objectName);
 
-    void signal(string &message);
-
     void handler(string &message);
 };
 

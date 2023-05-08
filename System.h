@@ -42,7 +42,6 @@ public:
 
     vector<int> cash;
 
-
 private:
     string enter;
 };

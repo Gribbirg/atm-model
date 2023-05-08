@@ -12,10 +12,6 @@ class Reader : public Base{
 public:
     Reader(Base *headObject, string objectName);
 
-    void signal_card(string &message);
-
-    void signal_cash(string &message);
-
     void signal(string &message);
 
     void handler(string &message);

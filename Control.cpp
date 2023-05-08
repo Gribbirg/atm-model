@@ -58,14 +58,11 @@ void Control::handler(string &message) {
 
         emit_signal(SIGNAL_D(Control::signal_to_output), "Turn off the ATM");
         emit_signal(SIGNAL_D(Control::signal_to_system), "");
-        return;
-
 
     } else if (message[0] == 'S') {
 
         system->print_branch_with_state();
         emit_signal(SIGNAL_D(Control::signal_to_system), "");
-        return;
 
     } else if (!current_card.empty() && !init_finish) {
 
@@ -104,10 +101,7 @@ void Control::handler(string &message) {
             for (int i = 15; i < message.size(); i++)
                 balance += message[i];
 
-            string card_num, str_value;
-            int value;
-
-            value = stoi(balance);
+            int value = stoi(balance);
 
             if (value % 100 != 0) {
                 emit_signal(SIGNAL_D(Control::signal_to_output), "The amount is not a multiple of 100");
@@ -115,11 +109,9 @@ void Control::handler(string &message) {
             }
 
             for (auto card: system->cards) {
-                if (card->num == current_card) {
-                    if (card->balance < value) {
-                        emit_signal(SIGNAL_D(Control::signal_to_output), "There is not enough money on the card");
-                        return;
-                    }
+                if (card->num == current_card && card->balance < value) {
+                    emit_signal(SIGNAL_D(Control::signal_to_output), "There is not enough money on the card");
+                    return;
                 }
             }
 

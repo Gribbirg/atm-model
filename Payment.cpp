@@ -10,13 +10,13 @@ Payment::Payment(Base *headObject, string objectName) : Base(headObject, objectN
 void Payment::signal(string &message) {
     auto system = (System *) (get_head_object()->get_head_object()->get_head_object());
     string card_num, str_value;
-    int j, value;
+    int value;
 
-    for (j = 0; j < 19; j++)
-        card_num += message[j];
+    for (int i = 0; i < 19; i++)
+        card_num += message[i];
 
-    for (; j < message.size(); j++)
-        str_value += message[j];
+    for (int i = 19; i < message.size(); i++)
+        str_value += message[i];
     value = stoi(str_value);
 
     vector<int> cash = system->cash;

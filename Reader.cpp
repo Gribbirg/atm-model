@@ -6,12 +6,6 @@
 
 Reader::Reader(Base *headObject, string objectName) : Base(headObject, objectName) {}
 
-void Reader::signal_card(string &message) {
-    string line;
-    getline(cin, line);
-    message += line;
-}
-
 void Reader::signal(string &message) {
     getline(cin, message);
 }
